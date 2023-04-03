@@ -5,48 +5,56 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false |
+| email              | string | null: false, unique :true|
 | encrypted_password | string | null: false |
 | first_name_kanji   | string | null: false |
 | last_name_kanji    | string | null: false |
 | first_name_kana    | string | null: false |
 | last_name_kana     | string | null: false |
-| birthday           | string | null: false |
-
-
-
+| date               | string | null: false |
 
 ### Association
 
-- has_many :item_users
-- has_many :items, through: :item_users
 
 ## items テーブル
 
-| Column            | Type   | Options     |
-| ------------------| ------ | ----------- |
-| image             | string | null: false |
-| description       | text   | null: false |
-| category          | string | null: false |
-| condition         | string | null: false |
-| fee               | string | null: false |
-| area              | string | null: false |
-| day               | string | null: false |
-| price             | string | null: false |
+| Column            | Type    | Options     |
+| ------------------| ------  | ----------- |
+| description       | text    | null: false |
+| category          | integer | null: false |
+| condition         | integer | null: false |
+| fee               | integer | null: false |
+| area              | integer | null: false |
+| day               | integer | null: false |
+| price             | integer | null: false |
 
+### Association
+
+- belongs_to :user
+
+
+## order テーブル
+
+| Column | Type       | Options     |
+| ------ | ---------- | ------------|
+| user   | string     | null: false |
+| item   | string     | null: false |
 
 
 ### Association
 
-- has_many :item_users
-- has_many :items, through: :item_users
+- belongs_to :item
+- belongs_to :user
 
-## item_users テーブル
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | string     | null: false, foreign_key: true |
-| item   | string     | null: false, foreign_key: true |
+
+## address テーブル
+
+| Column | Type       | Options     |
+| ------ | ---------- | ----------- |
+| user   | string     | null: false |
+| item   | string     | null: false |
+
 
 ### Association
 
