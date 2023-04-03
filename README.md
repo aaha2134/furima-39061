@@ -56,6 +56,7 @@
 | item   | string     | null: false |
 
 
+
 ### Association
 
 - belongs_to :item
