@@ -1,24 +1,54 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| first_name_kanji   | string | null: false |
+| last_name_kanji    | string | null: false |
+| first_name_kana    | string | null: false |
+| last_name_kana     | string | null: false |
+| birthday           | string | null: false |
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+### Association
 
-* Database initialization
+- has_many :item_users
+- has_many :items, through: :item_users
 
-* How to run the test suite
+## items テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column            | Type   | Options     |
+| ------------------| ------ | ----------- |
+| image             | string | null: false |
+| description       | text   | null: false |
+| category          | string | null: false |
+| condition         | string | null: false |
+| fee               | string | null: false |
+| area              | string | null: false |
+| day               | string | null: false |
+| price             | string | null: false |
 
-* Deployment instructions
 
-* ...
+
+### Association
+
+- has_many :item_users
+- has_many :items, through: :item_users
+
+## item_users テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | string     | null: false, foreign_key: true |
+| item   | string     | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
