@@ -35,7 +35,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :user
+- has_one :order
 
 
 ## orders テーブル
@@ -59,7 +59,7 @@
 | Column         | Type       | Options     |
 | -------------- | ---------- | ----------- |
 | post_code      | string     | null: false |
-| area_id        | string     | null: false |
+| area_id        | integer    | null: false |
 | municipalities | string     | null: false |
 | house_number   | string     | null: false |
 | building_name  | string     | ----------- |
