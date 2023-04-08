@@ -14,6 +14,6 @@ class Category < ActiveHash::Base
   ]
      include ActiveHash::Associations
      has_many :items
-    #  validates :category_id, numericality: { other_than: 1 }
+    # validates :id, numericality: { other_than: 1 }
 
     end

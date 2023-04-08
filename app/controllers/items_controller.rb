@@ -12,8 +12,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-  @item = Item.find(params[:user_id])
-  
+  @item = Item.new(item_params)
+
 
 
   if @item.save
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:product_name, :description, :category_id, :condition_id, :fee_id, :area_id, :delivery_time_id, :price, :user, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:product_name, :description, :category_id, :condition_id, :fee_id, :area_id, :deliverytime_id, :price, :user, :image,:user_id).merge(user_id: current_user.id)
   end
 
 
