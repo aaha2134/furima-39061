@@ -6,13 +6,19 @@ class Item < ApplicationRecord
   validates :fee_id       , presence: true,  numericality: { other_than: 1 }
   validates :area_id      , presence: true,  numericality: { other_than: 1 }
   validates :deliverytime_id , presence: true,  numericality: { other_than: 1 }
-  validates :price        , presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/, message: "は半角数字で入力してください" }
-  validates :user         , presence: true
+  validates :price        , presence: true, numericality: { only_integer:true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+  # validates :user         , presence: true
   validates :image        , presence: true
 
   belongs_to :user
-  has_one :order
+  # has_one :order
   has_one_attached :image
+  # belongs_to :category
+  # belongs_to :condition
+  # belongs_to :fee
+  # belongs_to :area
+  # belongs_to :deliverytime
+
 
   
 end

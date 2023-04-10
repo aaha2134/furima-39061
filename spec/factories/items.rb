@@ -9,7 +9,7 @@ FactoryBot.define do
     fee_id                {Faker::Number.between(from: 2, to: 3)}
     area_id               {Faker::Number.between(from: 2, to: 48)}
     deliverytime_id       {Faker::Number.between(from: 2, to: 4)}
-    price                 {Faker::Commerce.price(range: 300..9999999)}
+    price                 {Faker::Commerce.price(range: 300..9999999).to_i}
     user                  {FactoryBot.create(:user) }
 
   end

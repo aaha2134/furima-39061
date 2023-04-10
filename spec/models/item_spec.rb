@@ -107,12 +107,44 @@ RSpec.describe Item, type: :model do
 
           end
 
+
+          it '販売価格は300未満では投稿できない' do
+            @item.price = 200 
+            @item.valid?
+            expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+
+
+          end
+
+
+
+          it '販売価格は10000000以上では投稿できない' do
+            @item.price = 100000001 
+            @item.valid?
+            expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+
+
+          end
+
+
           it '販売価格は半角数字でなければ投稿できない' do
             @item.price = 'aaa１'  
             @item.valid?
             expect(@item.errors.full_messages).to include("Price is not a number")
 
           end
+
+
+
+
+          it 'userが紐づいていないと投稿できない' do
+            @item.user = nil
+            @item.price = 1000  
+            @item.valid?
+            expect(@item.errors.full_messages).to include("User must exist")
+
+          end
+
 
 
           end
