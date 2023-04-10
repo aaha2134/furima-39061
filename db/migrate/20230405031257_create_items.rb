@@ -12,6 +12,8 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.references :user , foreign_key: true           
       t.timestamps
       
+      
+
     end
   end
 end

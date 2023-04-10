@@ -51,7 +51,6 @@ class Area < ActiveHash::Base
   ]
      include ActiveHash::Associations
      has_many :items
-    #  validates :area_id, numericality: { other_than: 1 }
 
     end
 
