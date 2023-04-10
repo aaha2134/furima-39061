@@ -11,7 +11,7 @@ priceInput.addEventListener("input", () => {
   addTaxPrice.innerHTML = result
 
   const profit = document.getElementById("profit");
-  const profitValue = price - tax;
+  const profitValue = Math.floor(price - tax);
   profit.innerHTML = profitValue;
   });
   });

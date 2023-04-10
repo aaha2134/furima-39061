@@ -139,7 +139,6 @@ RSpec.describe Item, type: :model do
 
           it 'userが紐づいていないと投稿できない' do
             @item.user = nil
-            @item.price = 1000  
             @item.valid?
             expect(@item.errors.full_messages).to include("User must exist")
 
