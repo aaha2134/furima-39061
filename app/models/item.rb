@@ -14,9 +14,11 @@ class Item < ApplicationRecord
   belongs_to :user
   # has_one :order
   has_one_attached :image
-  belongs_to_active_hash :category
-  belongs_to_active_hash :condition
-  belongs_to_active_hash :fee
-  belongs_to_active_hash :area
-  belongs_to_active_hash :deliverytime
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :fee
+  belongs_to :area
+  belongs_to :deliverytime
 end
