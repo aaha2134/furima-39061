@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-  
+  # @orders = @item.orders.includes(:user)
   end
 
 
@@ -54,8 +54,7 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:product_name, :description, :category_id, :condition_id, :fee_id, :area_id, :deliverytime_id,
-                                 :price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:product_name, :description, :category_id, :condition_id, :fee_id, :area_id, :deliverytime_id, :price, :image).merge(user_id: current_user.id)
   end
 
   def set_item
