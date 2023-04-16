@@ -7,8 +7,7 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require("../item_price")
-require("../card")
-
+require("./card")
 // const count = require("../count")
 
 
