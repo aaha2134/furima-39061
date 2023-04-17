@@ -1,11 +1,14 @@
 class OrdersController < ApplicationController
-
+  before_action :authenticate_user!, only: [:index]
 
   def index
     @order_address = OrderAddress.new
     @item = Item.find(params[:item_id])
-  end
+    if Order.exists?(item_id: @item.id)
+      redirect_to root_path
 
+    end
+end
 
 
   def new
@@ -40,7 +43,7 @@ class OrdersController < ApplicationController
 
 
   def pay_item
-    Payjp.api_key = "sk_test_7c144b3056c5f5727f277771" 
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
     Payjp::Charge.create(
   amount: @item.price,
   card: order_params[:token],

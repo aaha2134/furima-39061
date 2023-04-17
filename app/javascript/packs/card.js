@@ -1,15 +1,10 @@
 const pay = () => {
-  const payjp = Payjp('pk_test_cc9d9466df32fdd26a8c358d');
-  const elements = payjp.elements();
-
-
-
-
+  const payjp = Payjp(process.env.PAYJP_PUBLIC_KEY);
+  console.log(payjp)
+  const elements = payjp.elements()
   
   const numberElement = elements.create('cardNumber');
   const expElement = elements.create('cardExpiry');
-  // const expmonth = expElement.month;
-  // const expyear = expElement.year;
   const cvcElement = elements.create('cardCvc');
   
 
@@ -17,8 +12,6 @@ const pay = () => {
 
 
   expElement.mount('#expiry-form');
-  // expElement.mount('#card-exp-month');
-  // expElement.mount('#card-exp-year');
   cvcElement.mount('#cvc-form');
 
   const submit = document.getElementById("button");
