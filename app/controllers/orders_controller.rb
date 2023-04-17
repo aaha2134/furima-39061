@@ -24,9 +24,6 @@ end
     end
   end
 
-  def show
-  end
-
 
   private
 
