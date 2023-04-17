@@ -6,7 +6,9 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     if Order.exists?(item_id: @item.id)
       redirect_to root_path
-
+    
+    elsif current_user == @item.user
+      redirect_to root_path
     end
 end
 
