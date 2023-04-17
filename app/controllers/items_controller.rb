@@ -30,7 +30,10 @@ class ItemsController < ApplicationController
 
 
   def edit
-    
+  
+    if Order.exists?(item_id: @item.id)
+      redirect_to root_path
+    end
 
   end
 
@@ -54,8 +57,7 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:product_name, :description, :category_id, :condition_id, :fee_id, :area_id, :deliverytime_id,
-                                 :price, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:product_name, :description, :category_id, :condition_id, :fee_id, :area_id, :deliverytime_id, :price, :image).merge(user_id: current_user.id)
   end
 
   def set_item
