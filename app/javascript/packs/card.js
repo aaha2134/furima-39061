@@ -7,8 +7,6 @@ const pay = () => {
   const cvcElement = elements.create('cardCvc');
 
   numberElement.mount('#number-form');
-
-
   expElement.mount('#expiry-form');
   cvcElement.mount('#cvc-form');
 
